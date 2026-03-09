@@ -1,4 +1,3 @@
-# main.py
 from fastapi import FastAPI
 from app.models import StartSessionRequest
 from app.queue_service import enqueue_request
