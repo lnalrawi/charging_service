@@ -1,4 +1,3 @@
-# callback_server.py
 from fastapi import FastAPI, Request
 
 app = FastAPI()
