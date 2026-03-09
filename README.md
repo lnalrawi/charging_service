@@ -8,19 +8,30 @@ The API accepts the request immediately and processes it in the background.
 Architecture
 The system contains these components:
 1- API Layer (Receives the charging session request, Validates the input, Places the request into a queue, Returns an immediate response)
+
 2- Queue (Stores requests temporarily, Allows asynchronous processing)
+
 3- Worker (Reads requests from the queue, Validates the driver token, Calls the authorization service, Saves the decision in a database, Sends the result to the callback URL)
+
 4- Authorization Service (Simple HTTP service, Uses an Access Control List (ACL), Returns:allowed OR not_allowed)
+
 5- Database (SQLite database, Stores authorization decisions for debugging and auditing)
 
 Request Flow
 1- Driver sends a request to the API.
+
 2- API validates the request.
+
 3- API places the request in the queue.
+
 4- API returns an accepted response immediately.
+
 5- Worker reads the request from the queue.
+
 6- Worker calls the authorization service.
+
 7- The decision is stored in the database.
+
 8- The result is sent to the callback URL.
 
 API Endpoint
