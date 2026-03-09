@@ -1,12 +1,17 @@
 ChargePoint Async Charging Session API
 
 Overview
+
 This project is a small service that simulates how a charging station starts a charging session.
+
 The system receives a request from a driver, checks if the driver is allowed to charge at the station, and sends the result to a callback URL.
+
 The API accepts the request immediately and processes it in the background.
 
 Architecture
+
 The system contains these components:
+
 1- API Layer (Receives the charging session request, Validates the input, Places the request into a queue, Returns an immediate response)
 
 2- Queue (Stores requests temporarily, Allows asynchronous processing)
@@ -18,6 +23,7 @@ The system contains these components:
 5- Database (SQLite database, Stores authorization decisions for debugging and auditing)
 
 Request Flow
+
 1- Driver sends a request to the API.
 
 2- API validates the request.
@@ -35,16 +41,20 @@ Request Flow
 8- The result is sent to the callback URL.
 
 API Endpoint
+
 Start Charging Session
 
 POST: /start-session
+
 Request Example
 {
   "station_id": "123e4567-e89b-12d3-a456-426614174000",
   "driver_token": "ValidDriverToken123456789",
   "callback_url": "http://localhost:8001/callback"
 }
+
 Response Example
+
 {
   "status": "accepted",
   "message": "Request is being processed asynchronously. The result will be sent to the provided callback URL."
@@ -52,13 +62,16 @@ Response Example
 
 
 Callback Response
+
 When processing finishes, the system sends the result to the callback URL.
+
 Example:
 {
   "station_id": "123e4567-e89b-12d3-a456-426614174000",
   "driver_token": "ValidDriverToken123456789",
   "status": "allowed"
 }
+
 Possible status values (allowed, not_allowed, unknown, invalid).
 
 
@@ -75,7 +88,9 @@ Running the Application
 
 
 Running Tests:
+
 To run the test suite (pytest tests/)
+
 The tests check (API endpoint, Authorization service, Queue functionality, Token validation)
 
 Notes
