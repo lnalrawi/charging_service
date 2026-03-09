@@ -54,9 +54,13 @@ Possible status values (allowed, not_allowed, unknown, invalid).
 Running the Application
 
 1- Install dependencies (pip install -r requirements.txt).
+
 2- Start the Authorization Service (uvicorn app.auth_service:app --port 9000)
+
 3- Start the Callback Server (for testing) (uvicorn app.callback_server:app --port 8001)
+
 4- Start the Main API (uvicorn main:app --port 8000)
+
 
 
 Running Tests:
