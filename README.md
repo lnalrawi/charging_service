@@ -47,17 +47,25 @@ Start Charging Session
 POST: /start-session
 
 Request Example
+
 {
+
   "station_id": "123e4567-e89b-12d3-a456-426614174000",
+  
   "driver_token": "ValidDriverToken123456789",
+  
   "callback_url": "http://localhost:8001/callback"
+  
 }
 
 Response Example
 
 {
+
   "status": "accepted",
+  
   "message": "Request is being processed asynchronously. The result will be sent to the provided callback URL."
+  
 }
 
 
@@ -66,10 +74,15 @@ Callback Response
 When processing finishes, the system sends the result to the callback URL.
 
 Example:
+
 {
+
   "station_id": "123e4567-e89b-12d3-a456-426614174000",
+  
   "driver_token": "ValidDriverToken123456789",
+  
   "status": "allowed"
+  
 }
 
 Possible status values (allowed, not_allowed, unknown, invalid).
